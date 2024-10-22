@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+ background: linear-gradient(to bottom, rgba(153, 203, 130, 0.7) 0%, rgba(255, 255, 255, 0.7) 60%), #fff;
+}
+/* body{
+  background: linear-gradient(rgb(7, 57, 64) 0%, black 40%), #000;
+  @apply text-white min-h-dvh;
+}  */
