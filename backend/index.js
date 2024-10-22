@@ -5,10 +5,10 @@ const playerRoutes = require('./routes/playerRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const app = express();
 require('dotenv').config();
-const corsOption = {
-  origin: "https://fantasy-sport-three.vercel.app/",
-  credentials: true
-}
+ origin: [
+    "http://localhost:3000", 
+    "https://fantasy-sport-three.vercel.app" 
+  ],
 
 app.use(cors(corsOption));
 
