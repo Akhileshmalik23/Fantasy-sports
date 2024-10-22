@@ -63,10 +63,10 @@ export default function Teams() {
           Search
         </button>
 
-        {/* Error Message */}
+       
         {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
 
-        {/* Team Details */}
+       
         {detail ? (
           <div className="mt-6 bg-gray-50 p-4 rounded-lg shadow-md">
             <h3 className="text-2xl font-bold text-gray-800 text-center">{detail.name}</h3>

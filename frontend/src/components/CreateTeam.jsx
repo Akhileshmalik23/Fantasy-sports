@@ -10,9 +10,18 @@ const CreateTeam = () => {
   const [selectedPosition, setSelectedPosition] = useState("All");
 
   useEffect(() => {
+    if (message) {
+      alert(message);
+      setMessage("");
+    }
+  }, [message]);
+
+  useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await axios.get("https://fantasy-sports-mu.vercel.app/players");
+        const response = await axios.get(
+          "https://fantasy-sports-mu.vercel.app/players"
+        );
         setPlayers(response.data);
       } catch (error) {
         console.error("Error fetching players:", error);
@@ -22,7 +31,8 @@ const CreateTeam = () => {
   }, []);
 
   const handlePlayerSelect = (player) => {
-    if (selectedPlayers.includes(player) || selectedPlayers.length >= 11) return;
+    if (selectedPlayers.includes(player) || selectedPlayers.length >= 11)
+      return;
     setSelectedPlayers([...selectedPlayers, player]);
   };
 
@@ -33,11 +43,14 @@ const CreateTeam = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://fantasy-sports-mu.vercel.app/team/create", {
-        teamName,
-        playerNames: selectedPlayers.map((player) => player.name),
-      });
-      setMessage(`Team created successfully: ${JSON.stringify(response.data)}`);
+      const response = await axios.post(
+        "https://fantasy-sports-mu.vercel.app/team/create",
+        {
+          teamName,
+          playerNames: selectedPlayers.map((player) => player.name),
+        }
+      );
+      setMessage(`Yout Team is Created successfully: }`);
       setTeamName("");
       setSelectedPlayers([]);
     } catch (error) {
@@ -66,25 +79,27 @@ const CreateTeam = () => {
 
   return (
     <div className="container mx-auto p-4 md:p-6">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-gray-800">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center text-gray-800">
         Create a New Team
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex flex-col items-center mb-4">
-          <label className="block mb-2 text-lg text-gray-700">Team Name:</label>
+        <div className="flex flex-col md:flex-row justify-center items-center mb-4">
+          <label className="block mb-2 md:mr-4 text-lg text-gray-700">
+            Team Name:
+          </label>
           <input
             type="text"
             value={teamName}
             onChange={(e) => setTeamName(e.target.value)}
             required
-            className="border border-gray-300 rounded-md p-2 w-full md:w-1/2"
+            className="border border-gray-300 rounded-md p-2 w-full md:w-1/3"
           />
         </div>
 
-        <div className="flex flex-col md:flex-row">
-          <div className="flex flex-col items-center md:w-1/2 mb-4 md:mb-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center">
             <h3 className="text-lg font-semibold mb-2">Your Team:</h3>
-            <ul className="space-y-2 p-4 text-gray-500 w-full h-52 border border-gray-700 bg-amber-50 rounded-3xl">
+            <ul className="space-y-2 p-4 text-gray-500 w-full md:w-[360px] h-[550px] border-gray-700 bg-amber-50 border rounded-3xl overflow-y-auto">
               {selectedPlayers.map((player) => (
                 <li
                   key={player._id}
@@ -109,29 +124,25 @@ const CreateTeam = () => {
             <div className="mt-2 font-semibold">
               Total Points: {totalPoints}
             </div>
-
             <button
               type="submit"
-              className="bg-blue-500 text-white p-2 rounded mt-2"
+              className="bg-blue-500 text-white p-2 mt-4 rounded w-full md:w-auto"
               disabled={selectedPlayers.length === 0}
             >
               Create Team
             </button>
             {message && (
-              <p className="mt-4 text-center">
-                {/* {message} */}
-                Your team is created successfully!
-              </p>
+              <p className="mt-4 text-green-500 text-center">{message}</p>
             )}
           </div>
-          <div className="md:w-1/2">
+
+          <div>
             <h3 className="text-lg font-semibold mb-2 flex justify-center">
               Available Players:
             </h3>
 
-            <div className="flex flex-col space-y-4 mb-4">
-              {/* Dropdown for team selection */}
-              <div>
+            <div className="flex space-x-4 mb-4">
+              <div className="w-1/2">
                 <label className="block mb-1 font-semibold text-gray-700">
                   Team:
                 </label>
@@ -148,8 +159,7 @@ const CreateTeam = () => {
                 </select>
               </div>
 
-              {/* Dropdown for position selection */}
-              <div>
+              <div className="w-1/2">
                 <label className="block mb-1 font-semibold text-gray-700">
                   Position:
                 </label>
@@ -167,7 +177,7 @@ const CreateTeam = () => {
               </div>
             </div>
 
-            <ul className="space-y-2 h-48 overflow-auto">
+            <ul className="space-y-2 h-[450px] overflow-y-auto">
               {filteredPlayers.map((player) => (
                 <li
                   key={player._id}

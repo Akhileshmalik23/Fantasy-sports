@@ -5,21 +5,16 @@ import {ReactTyped} from "react-typed";
 const Home = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-between">
-    
-      <section className="flex-grow  px-6 py-16 flex flex-col items-center bg-gray-100 rounded-lg shadow-lg">
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center bg-gradient-to-br from-green-600 to-blue-600 bg-clip-text text-transparent">
-  Create Your Dream Team!
-</h2>
-
+      <section className="flex-grow px-6 py-16 flex flex-col items-center bg-gray-100 rounded-lg shadow-lg">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center bg-gradient-to-br from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Create Your Dream Team!
+        </h2>
 
         <div className="flex flex-col md:flex-row justify-center items-center my-6 space-y-4 md:space-y-0 md:space-x-3">
-          {/* <p className="md:text-4xl sm:text-3xl text-2xl font-semibold text-gray-700 text-center">
-            Select Players, Build Your Team, Track Progress:
-          </p> */}
           <ReactTyped
             className="md:text-4xl sm:text-3xl text-2xl font-semibold text-[#d0546d] text-center"
             strings={["Create", "Search", "Track", "Win"]}
-            typeSpeed={100}
+            typeSpeed={90}
             backSpeed={80}
             loop
           />
@@ -30,27 +25,27 @@ const Home = () => {
           teams, tracking your team's points, and aiming for victory!
         </p>
 
-        <div className="mt-8 flex justify-center space-x-4">
-  <Link
-    to="/players"
-    className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-white hover:border hover:text-black hover:border-green-600 transition duration-300"
-  >
-    View All Players
-  </Link>
-  <Link
-    to="/teams/create"
-    className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-white hover:border hover:text-black hover:border-green-600 transition duration-300"
-  >
-    Start Building
-  </Link>
-  <Link
-    to="/teams/search"
-    className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-white hover:border hover:text-black hover:border-green-600 transition duration-300"
-  >
-    Search by Team Name
-  </Link>
-</div>
-
+        {/* Buttons */}
+        <div className="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <Link
+            to="/players"
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-white hover:border hover:text-black hover:border-blue-600 transition duration-300 w-full sm:w-auto text-center"
+          >
+            View All Players
+          </Link>
+          <Link
+            to="/teams/create"
+            className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-white hover:border hover:text-black hover:border-green-600 transition duration-300 w-full sm:w-auto text-center"
+          >
+            Start Building
+          </Link>
+          <Link
+            to="/teams/search"
+            className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-white hover:border hover:text-black hover:border-purple-600 transition duration-300 w-full sm:w-auto text-center"
+          >
+            Search by Team Name
+          </Link>
+        </div>
       </section>
 
       {/* Footer */}

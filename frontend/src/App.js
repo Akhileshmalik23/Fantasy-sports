@@ -11,7 +11,6 @@ function App() {
    <>
  <Router>
  <div className="min-h-screen">
-        {/* Navbar */}
         <header className="bg-white shadow">
           <div className="container mx-auto px-4 py-6 flex justify-between items-center">
            <Link to='/'>
@@ -46,7 +45,7 @@ function App() {
           </div>
         </header>
 
-        {/* Routes */}
+       
         
           <Routes>
             <Route path="/" element={<Home />} />

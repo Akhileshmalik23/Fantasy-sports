@@ -17,7 +17,7 @@ router.post('/create', async (req, res) => {
   const playersData = req.body  
 
   try {
-    const newPlayers = await Player.insertMany(playersData) // Using insertMany to handle multiple players
+    const newPlayers = await Player.insertMany(playersData)
     res.status(201).json(newPlayers)
   } catch (err) {
     console.log('dream11');
