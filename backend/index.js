@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 const playerRoutes = require('./routes/playerRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const app = express();
 require('dotenv').config();
- origin: [
-    "http://localhost:3000", 
-    "https://fantasy-sport-three.vercel.app" 
+
+const corsOption = {
+  origin: [
+    "http://localhost:3000",
+    "https://fantasy-sport-three.vercel.app"
   ],
+  credentials: true,
+};
 
 app.use(cors(corsOption));
 
@@ -23,7 +27,7 @@ app.use('/team', teamRoutes);
 
 app.get('/pink', (req, res) => {
   res.json('pop');
-})
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
