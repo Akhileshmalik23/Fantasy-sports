@@ -26,7 +26,7 @@ export default function Teams() {
       return;
     }
 
-    const url = `http://localhost:5000/team/${teamName}`;
+    const url = `https://fantasy-sports-mu.vercel.app/team/${teamName}`;
 
     try {
       const response = await axios.get(url);

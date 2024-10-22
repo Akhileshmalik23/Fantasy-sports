@@ -9,7 +9,7 @@ export default function PlayerTable() {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/players");
+        const response = await axios.get("https://fantasy-sports-mu.vercel.app/players");
         setPlayers(response.data);
         setLoading(false);
       } catch (error) {

@@ -6,7 +6,7 @@ const teamRoutes = require('./routes/teamRoutes');
 const app = express();
 require('dotenv').config();
 const corsOption = {
-  origin: "http://localhost:3000/",
+  origin: "https://fantasy-sport-three.vercel.app/",
   credentials: true
 }
 
